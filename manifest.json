@@ -1,0 +1,6 @@
+{
+	"manifest_version":2,
+	"name": "Browser Buddy",
+	"description": "extension to incetevize productivity",
+	"version" : "1.0"
+}
