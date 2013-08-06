@@ -6,7 +6,11 @@ div {
     opacity: 0.9;
     border-radius: 5px;
     background-color: #45FF22;
-    
+}
+
+#fadeOut{
+	opacity: 0.3;
+	margin: 10px;
 }
 
 .button{
@@ -18,5 +22,5 @@ div {
 	font-family: Arial;
 	font-size: 8px;
 	text-align: center;
-	padding: 5px 10px 5px 10px;
+	margin: 5px 10px 5px 10px;
 }

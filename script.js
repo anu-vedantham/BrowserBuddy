@@ -7,29 +7,26 @@ $(document).ready(function() {
 	   op_up increases opacity by 0.1 regardless of status
 	*/
 	$("#op_down").click(function(){
-		currOp = $('#fade2black').css('opacity');
+		currOp = $('#fadeOut').css('opacity');
 		/*$("#fade2black").css("background-color","#00CC00");*/
 		if ((currOp > 0.1) && isAlive){
 			newOp = parseFloat(currOp)-0.1;
-			$("#fade2black").css("opacity",newOp);
+			$("#fadeOut").css("opacity",newOp);
 		}
 		else{
-			$("#fade2black").css("opacity",1);
-			$("#fade2black").css("background-color","#CC0000");
+			$("#fadeOut").css("opacity",1);
 			isAlive = 0;
 		}
 	});
 	$("#op_up").click(function(){
-		currOp = $('#fade2black').css('opacity');
-		/*$("#fade2black").css("background-color","#0000CC");*/
+		currOp = $('#fadeOut').css('opacity');
 		if(!isAlive){
 			isAlive = 1;
-			$("#fade2black").css("background-color","#000000");
-		}
+			}
 		
 		if ((currOp < 1)){
 			newOp = parseFloat(currOp)+0.1;
-			$("#fade2black").css("opacity",newOp);
+			$("#fadeOut").css("opacity",newOp);
 		}
 	});
 
