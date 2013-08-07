@@ -3,7 +3,6 @@ div {
     height: 100px;
     width: 100px;
     padding:10px;
-    opacity: 0.9;
     border-radius: 5px;
     background-color: #45FF22;
 }
@@ -13,14 +12,10 @@ div {
 	margin: 10px;
 }
 
-.button{
-	height: 20px;
-	width: 30px;
+button{
 	display: inline-block;
-	color: #FFFFFFF;
-	background-color: #00CC00;
 	font-family: Arial;
-	font-size: 8px;
+	border-radius:  5px;
 	text-align: center;
-	margin: 5px 10px 5px 10px;
+	margin: 5px 5px 5px 5px;
 }

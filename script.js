@@ -1,5 +1,4 @@
-var isAlive = 1;
-var isGrey = 0;
+var stored; /*shouldn't need to refer to this*/
 var buddySrc = "testing.png"; 
 
 function updateGreyScale(img, newVal){
@@ -9,13 +8,32 @@ function updateGreyScale(img, newVal){
 	processFilters();
 }
 
+function getStoredValues(items){
+	if (items != null){
+		stored = $.extend(true, {}, items);
+		$("#fadeOut").css("opacity",stored.opacity);
+		updateGreyScale($("#fadeOut")[0], stored.greyscale);
+	}
+	else
+		console.log('WE HAVE A PROBLEM');
+}
+
 $(document).ready(function() {
-	/* Buttons for testing
-	   op_down decreases opacity by 0.1 till opacity is 0
-	   if <0.1, target is considered dead and is red
-	   op_up increases opacity by 0.1 regardless of status
-	*/
+	var dict = {
+				'opacity': 1,
+				'greyscale': 0,
+				'expression': 'testing.png',
+				'domains': [] 
+			};
 	var incr = 0.1;
+	chrome.storage.sync.get(dict, getStoredValues);
+
+	/* Buttons for testing
+	   op_down decreases opacity by variable incr [0,1]
+	   op_up increases opacity by incr [0,1]
+	   sat_up decreases greyscale by incr [0,1]
+	   sat_down increases greyscale by incr [0,1]
+	*/
 	$("#op_down").click(function(){
 		strOp = $('#fadeOut').css('opacity');
 		currOp = parseFloat(strOp);
@@ -23,28 +41,28 @@ $(document).ready(function() {
 		if ((currOp-incr >= 0)){
 			newOp = currOp-incr;
 			$("#fadeOut").css("opacity",newOp);
+			chrome.storage.sync.set({'opacity': newOp});
 		}
-		/*else
-			isDead = 1;*/
-	});
+	});	
 	$("#op_up").click(function(){
 		strOp = $('#fadeOut').css('opacity');
-		currOp = parseFloat(strOp);
-		//isDead = 0;		
+		currOp = parseFloat(strOp);		
 		if ((currOp+incr <= 1)){
 			newOp = currOp+incr;
 			$("#fadeOut").css("opacity",newOp);
+			chrome.storage.sync.set({'opacity':newOp});
 		}
 	});
+
 	$("#sat_up").click(function() {
 		//Saturation up = Greyscale down
 		strGr = $('#fadeOut').attr('data-pb-greyscale-opacity');
 		currGr = parseFloat(strGr);
-		//isGrey = 0;
 		if (currGr-incr >= 0){
 			img = $("#fadeOut")[0];
-			newGr = currGr-0.1;
+			newGr = currGr-incr;
 			updateGreyScale(img, newGr);
+			chrome.storage.sync.set({'greyscale':newGr});
 		}
 		
 	});
@@ -52,14 +70,12 @@ $(document).ready(function() {
 		//Saturation down = Greyscale up
 		strGr = $('#fadeOut').attr('data-pb-greyscale-opacity');
 		currGr = parseFloat(strGr);
-		if (currGr < 1 && !isGrey){
-			newGr = currGr+0.1;
+		if (currGr+incr <= 1){
+			newGr = currGr+incr;
 			img = $("#fadeOut")[0];
 			updateGreyScale(img, newGr);
+			chrome.storage.sync.set({'greyscale':newGr});
 		}
-		/*else{
-			isGrey = 1;
-		}*/
 	});
 
 
