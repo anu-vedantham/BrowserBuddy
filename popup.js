@@ -1,5 +1,6 @@
 var stored; /*shouldn't need to refer to this*/
 var buddySrc = "testing.png"; 
+var bg;
 
 function updateGreyScale(img, newVal){
 	flushDataAttributes(img);
@@ -11,8 +12,8 @@ function updateGreyScale(img, newVal){
 function getStoredValues(items){
 	if (items != null){
 		stored = $.extend(true, {}, items);
-		$("#fadeOut").css("opacity",stored.opacity);
-		updateGreyScale($("#fadeOut")[0], stored.greyscale);
+		$("#fadeOut").css("opacity",items.opacity);
+		updateGreyScale($("#fadeOut")[0], items.greyscale);
 	}
 	else
 		console.log('WE HAVE A PROBLEM');
@@ -23,11 +24,12 @@ $(document).ready(function() {
 				'opacity': 1,
 				'greyscale': 0,
 				'expression': 'testing.png',
-				'domains': [] 
+				'domains': [],
+				'listBadSites':[]
 			};
 	var incr = 0.1;
 	chrome.storage.sync.get(dict, getStoredValues);
-
+	bg = chrome.extension.getBackgroundPage();
 	/* Buttons for testing
 	   op_down decreases opacity by variable incr [0,1]
 	   op_up increases opacity by incr [0,1]
@@ -54,7 +56,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#sat_up").click(function() {
+	$("#sat_up").click(function(){
 		//Saturation up = Greyscale down
 		strGr = $('#fadeOut').attr('data-pb-greyscale-opacity');
 		currGr = parseFloat(strGr);
@@ -66,7 +68,7 @@ $(document).ready(function() {
 		}
 		
 	});
-	$("#sat_down").click(function() {
+	$("#sat_down").click(function(){
 		//Saturation down = Greyscale up
 		strGr = $('#fadeOut').attr('data-pb-greyscale-opacity');
 		currGr = parseFloat(strGr);
