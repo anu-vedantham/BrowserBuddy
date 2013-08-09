@@ -12,9 +12,22 @@ div {
 	margin: 10px;
 }
 
+form{
+	background-color: #8B7500;
+	border-radius: 5px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
+	font-size: 12px;
+	color: #F8F8FF;
+	margin: 2px 2px 2px 2px;
+}
+input{
+	background-color: #CDAD00;
+	border-radius: 5px;
+}
+
 button{
 	display: inline-block;
-	font-family: Arial;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
 	border-radius:  5px;
 	text-align: center;
 	margin: 5px 5px 5px 5px;
