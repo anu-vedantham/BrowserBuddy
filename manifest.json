@@ -10,7 +10,8 @@
 	  	"permissions": [
 		"storage",
 		"tabs",
-		"background"
+		"background",
+		"alarms"
 ]
 ,"background":{
 "page": "background.html"

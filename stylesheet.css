@@ -10,6 +10,7 @@ div {
 #title{
 	text-decoration: none;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
+	border-radius: 5px;
 	background-color: #DAA520;
 	color: #8B7500;
 	text-align: center;
