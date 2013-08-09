@@ -7,8 +7,16 @@ div {
     background-color: #45FF22;
 }
 
-#fadeOut{
-	opacity: 0.3;
+#title{
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
+	background-color: #DAA520;
+	color: #8B7500;
+	text-align: center;
+}
+
+#buddy{
+	opacity: 1;
 	margin: 10px;
 }
 
@@ -18,10 +26,10 @@ form{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
 	font-size: 12px;
 	color: #F8F8FF;
-	margin: 2px 2px 2px 2px;
+	margin: 2px;
 }
 input{
-	background-color: #CDAD00;
+	background-color: #DAA520;
 	border-radius: 5px;
 }
 
@@ -30,5 +38,5 @@ button{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Arial;
 	border-radius:  5px;
 	text-align: center;
-	margin: 5px 5px 5px 5px;
+	margin: 5px;
 }
