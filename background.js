@@ -1,5 +1,5 @@
 var alarmName = "BB"
-
+console.log('backgroudn loaded');
 	//chrome.storage.sync.clear();
 	var dict = {
 		'opacity': 1,
@@ -9,19 +9,21 @@ var alarmName = "BB"
 	};
 	chrome.storage.sync.set(dict);
 
-/*chrome.storage.onChanged.addListener(function(changes, areaName) {
-	var t = 5;
+chrome.storage.onChanged.addListener(function(changes, areaName) {
 	if (changes.checked !== null && changes.checked !== undefined){
-		if (changes.checked === true){
-			console.log("debug");
-			alarmInfo = {'name':bs.alarmName, 
+		if (changes.checked.newValue === true){
+			alarmInfo = {'name':alarmName, 
 			'when':Date.now(), 'periodInMinutes':1};
-			chrome.alarms.create(alarmName, alarmInfo);
+	chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+		function(tabs){
+				console.log(tabs[0].url);
+   	});
+			//chrome.alarms.create(alarmName, alarmInfo);
 		}
 	} 
 
 });
-
+/*
 chrome.alarms.onAlarm.addListener(function(alarm) {
 	chrome.storage.get(null, function(items){
 		console.log('bunny is more sad');
